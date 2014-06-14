@@ -4,7 +4,7 @@ namespace :ol do
 
     desc "Import boundaries and postcodes"
     task import_boundaries: :environment do
-        CSV.foreach('tmp/Postcodes2009Boundaries_2.csv', :headers => true) do |row|
+        CSV.foreach('db/data/Postcodes2009Boundaries_2.csv', :headers => true) do |row|
             row.each {|key, value| row[key] = value.strip}
             boundary = nil
             begin
@@ -28,7 +28,7 @@ namespace :ol do
 
     desc "Import suburbs"
     task import_suburbs: :environment do
-        CSV.foreach('tmp/Australian_Post_Codes_Lat_Lon.csv', :headers => true) do |row|
+        CSV.foreach('db/data/Australian_Post_Codes_Lat_Lon.csv', :headers => true) do |row|
             row.each {|key, value| row[key] = value.strip}
             postcode = BoundaryPostcode.find_by(postcode: row['postcode'])
             if postcode
@@ -43,20 +43,28 @@ namespace :ol do
 
     desc "Import representatives"
     task import_representatives: :environment do
-        CSV.foreach('tmp/StateRepsCSV.csv', :headers => true) do |row|
+        CSV.foreach('db/data/StateRepsCSV.csv', :headers => true) do |row|
             row.each {|key, value| row[key] = value.strip}
             boundary = Boundary.find_by(name: row['"Electorate"'])
             if !boundary
                 raise "Boundary #{boundary.naem} not found"
             end
-            postcode = BoundaryPostcode.find_by(boundary: boundary)
+            postcode = BoundaryPostcode.find_by(
+                boundary: boundary,
+                postcode: row['"Electorate Office Postal PostCode"'])
+            gender = 'NA'
+            if row['"Gender"'] == 'FEMALE'
+                gender = 'f'
+            elsif row['"Gender"'] == 'MALE'
+                gender = 'm'
+            end
             profile = Profile.create(
                 preferred_name: row['"Preferred Name"'],
                 first_name: row['"First Name"'],
                 last_name: row['"Surname"'],
                 screen_name: row['"First Name"'],
                 title: row['"Salutation"'],
-                gender: row['"Gender"'])
+                gender: gender)
             address = Address.create(
                 profile: profile,
                 street: row['"Electorate Office Postal Address"'],

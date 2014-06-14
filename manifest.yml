@@ -1,0 +1,7 @@
+applications:
+- name: openletter
+  memory: 1024M
+  instances: 1
+  command: bundle exec rake db:migrate && bundle exec rails s -p $PORT
+  services:
+  - openletter_pg
