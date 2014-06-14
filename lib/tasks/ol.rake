@@ -41,4 +41,40 @@ namespace :ol do
         end
     end
 
+    desc "Import representatives"
+    task import_representatives: :environment do
+        CSV.foreach('tmp/StateRepsCSV.csv', :headers => true) do |row|
+            row.each {|key, value| row[key] = value.strip}
+            boundary = Boundary.find_by(name: row['"Electorate"'])
+            if !boundary
+                raise "Boundary #{boundary.naem} not found"
+            end
+            postcode = BoundaryPostcode.find_by(boundary: boundary)
+            profile = Profile.create(
+                preferred_name: row['"Preferred Name"'],
+                first_name: row['"First Name"'],
+                last_name: row['"Surname"'],
+                screen_name: row['"First Name"'],
+                title: row['"Salutation"'],
+                gender: row['"Gender"'])
+            address = Address.create(
+                street: row['"Electorate Office Postal Address"'],
+                state: row['"Electorate Office Postal State"'],
+                postcode: row['"Electorate Office Postal PostCode"'],
+                suburb: row['"Electorate Office Postal Suburb"'],
+                country: 'Australia',
+                phone: row['"Electorate Office Phone"'])
+            representative = Representative.create(
+                boundary: boundary,
+                boundary_postcode: postcode,
+                profile: profile,
+                address: address,
+                honorific: row['"Honorific"'],
+                parlamentary_title: row['"Parliamentary Titles"'],
+                parlamentary_title_short: row['""'],
+                party: row['"Political Party"'])
+            puts "#{profile.first_name} #{profile.last_name}"
+        end
+    end
+
 end

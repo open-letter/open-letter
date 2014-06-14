@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614072518) do
+ActiveRecord::Schema.define(version: 20140614073739) do
 
   create_table "addresses", force: true do |t|
     t.string   "state",      limit: 3
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 20140614072518) do
   end
 
   create_table "representatives", force: true do |t|
+    t.integer  "boundary_id"
+    t.integer  "boundary_postcode_id"
     t.integer  "profile_id"
     t.integer  "address_id"
     t.string   "honorific"
@@ -107,6 +109,8 @@ ActiveRecord::Schema.define(version: 20140614072518) do
   end
 
   add_index "representatives", ["address_id"], name: "index_representatives_on_address_id"
+  add_index "representatives", ["boundary_id"], name: "index_representatives_on_boundary_id"
+  add_index "representatives", ["boundary_postcode_id"], name: "index_representatives_on_boundary_postcode_id"
   add_index "representatives", ["profile_id"], name: "index_representatives_on_profile_id"
 
   create_table "users", force: true do |t|
