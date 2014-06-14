@@ -4,7 +4,7 @@ namespace :ol do
 
     desc "Import boundaries and postcodes"
     task import_boundaries: :environment do
-        CSV.foreach('tmp/Postcodes2009Boundaries_2.csv', :headers => true) do |row|
+        CSV.foreach('db/data/Postcodes2009Boundaries_2.csv', :headers => true) do |row|
             row.each {|key, value| row[key] = value.strip}
             boundary = nil
             begin
@@ -28,7 +28,7 @@ namespace :ol do
 
     desc "Import suburbs"
     task import_suburbs: :environment do
-        CSV.foreach('tmp/Australian_Post_Codes_Lat_Lon.csv', :headers => true) do |row|
+        CSV.foreach('db/data/Australian_Post_Codes_Lat_Lon.csv', :headers => true) do |row|
             row.each {|key, value| row[key] = value.strip}
             postcode = BoundaryPostcode.find_by(postcode: row['postcode'])
             if postcode
@@ -43,7 +43,7 @@ namespace :ol do
 
     desc "Import representatives"
     task import_representatives: :environment do
-        CSV.foreach('tmp/StateRepsCSV.csv', :headers => true) do |row|
+        CSV.foreach('db/data/StateRepsCSV.csv', :headers => true) do |row|
             row.each {|key, value| row[key] = value.strip}
             boundary = Boundary.find_by(name: row['"Electorate"'])
             if !boundary

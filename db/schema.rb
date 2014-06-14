@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140614073739) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: true do |t|
     t.string   "state",      limit: 3
     t.string   "street"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140614073739) do
     t.datetime "updated_at"
   end
 
-  add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id"
+  add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
 
   create_table "boundaries", force: true do |t|
     t.string   "name"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140614073739) do
     t.datetime "updated_at"
   end
 
-  add_index "boundaries", ["name"], name: "index_boundaries_on_name", unique: true
+  add_index "boundaries", ["name"], name: "index_boundaries_on_name", unique: true, using: :btree
 
   create_table "boundary_postcodes", force: true do |t|
     t.integer  "postcode"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140614073739) do
     t.datetime "updated_at"
   end
 
-  add_index "boundary_postcodes", ["boundary_id"], name: "index_boundary_postcodes_on_boundary_id"
+  add_index "boundary_postcodes", ["boundary_id"], name: "index_boundary_postcodes_on_boundary_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -76,11 +79,11 @@ ActiveRecord::Schema.define(version: 20140614073739) do
     t.datetime "updated_at"
   end
 
-  add_index "letters", ["category_id"], name: "index_letters_on_category_id"
-  add_index "letters", ["letter_thread_id"], name: "index_letters_on_letter_thread_id"
-  add_index "letters", ["receiver_id"], name: "index_letters_on_receiver_id"
-  add_index "letters", ["response_id"], name: "index_letters_on_response_id"
-  add_index "letters", ["sender_id"], name: "index_letters_on_sender_id"
+  add_index "letters", ["category_id"], name: "index_letters_on_category_id", using: :btree
+  add_index "letters", ["letter_thread_id"], name: "index_letters_on_letter_thread_id", using: :btree
+  add_index "letters", ["receiver_id"], name: "index_letters_on_receiver_id", using: :btree
+  add_index "letters", ["response_id"], name: "index_letters_on_response_id", using: :btree
+  add_index "letters", ["sender_id"], name: "index_letters_on_sender_id", using: :btree
 
   create_table "profiles", force: true do |t|
     t.string   "preferred_name"
@@ -108,10 +111,10 @@ ActiveRecord::Schema.define(version: 20140614073739) do
     t.datetime "updated_at"
   end
 
-  add_index "representatives", ["address_id"], name: "index_representatives_on_address_id"
-  add_index "representatives", ["boundary_id"], name: "index_representatives_on_boundary_id"
-  add_index "representatives", ["boundary_postcode_id"], name: "index_representatives_on_boundary_postcode_id"
-  add_index "representatives", ["profile_id"], name: "index_representatives_on_profile_id"
+  add_index "representatives", ["address_id"], name: "index_representatives_on_address_id", using: :btree
+  add_index "representatives", ["boundary_id"], name: "index_representatives_on_boundary_id", using: :btree
+  add_index "representatives", ["boundary_postcode_id"], name: "index_representatives_on_boundary_postcode_id", using: :btree
+  add_index "representatives", ["profile_id"], name: "index_representatives_on_profile_id", using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "profile_id"
@@ -120,7 +123,7 @@ ActiveRecord::Schema.define(version: 20140614073739) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["address_id"], name: "index_users_on_address_id"
-  add_index "users", ["profile_id"], name: "index_users_on_profile_id"
+  add_index "users", ["address_id"], name: "index_users_on_address_id", using: :btree
+  add_index "users", ["profile_id"], name: "index_users_on_profile_id", using: :btree
 
 end
