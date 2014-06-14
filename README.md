@@ -8,3 +8,6 @@ http://www.aph.gov.au/~/media/05%20About%20Parliament/54%20Parliamentary%20Depts
  - Remove spaces from the headers
 
 Postcodes: http://www.corra.com.au/downloads/Australian_Post_Codes_Lat_Lon.zip
+
+MPs and senators:
+http://www.aph.gov.au/Senators_and_Members/Guidelines_for_Contacting_Senators_and_Members/Address_labels_and_CSV_files 
