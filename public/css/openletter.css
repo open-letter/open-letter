@@ -1,0 +1,81 @@
+body {
+  padding-top: 50px;
+  
+}
+
+.banner {
+  padding: 40px 15px;
+  text-align: center;
+  height: 860px;
+  background-position:center; 
+  background-image: url("../images/parliament.jpg");
+}
+
+.address {
+  padding: 40px 15px;
+  background-color: #999;
+}
+
+.thoughts {
+  display: none;
+  padding-bottom: 50px;
+}
+
+.letter-section {
+  padding-top: 40px;
+}
+
+textarea {  
+  resize: none;
+}
+
+.sender {
+  padding-top: 8px;
+}
+
+.send-letter {
+  padding: 50px 0px;
+  text-align: center;
+}
+
+#sender-address {
+  font-size: 22px;
+}
+
+#rep {
+  display: none;
+  background-color: #eee;
+  padding-bottom: 50px;
+}
+
+#mp {
+  padding-top: 60px;
+}
+
+#postcode {
+  text-align: center;
+}
+#postcode:focus {
+  border-color: #f1c40f;
+}
+.parliament img{
+    max-width:100% !important;
+    height:auto;
+    display:block;
+}
+
+.subtle {
+  color: #888;
+}
+
+.progress-bar-inverse {
+  background-color: #34495e;
+}
+
+.dark-bg {
+/*  font-weight: bold;*/
+  color: white;
+}
+.topic {
+  margin-bottom: 4px;
+}
