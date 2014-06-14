@@ -50,13 +50,19 @@ namespace :ol do
                 raise "Boundary #{boundary.naem} not found"
             end
             postcode = BoundaryPostcode.find_by(boundary: boundary)
+            gender = 'NA'
+            if row['"Gender"'] == 'FEMALE'
+                gender = 'f'
+            elsif row['"Gender"'] == 'MALE'
+                gender = 'm'
+            end
             profile = Profile.create(
                 preferred_name: row['"Preferred Name"'],
                 first_name: row['"First Name"'],
                 last_name: row['"Surname"'],
                 screen_name: row['"First Name"'],
                 title: row['"Salutation"'],
-                gender: row['"Gender"'])
+                gender: gender)
             address = Address.create(
                 profile: profile,
                 street: row['"Electorate Office Postal Address"'],
