@@ -58,6 +58,7 @@ namespace :ol do
                 title: row['"Salutation"'],
                 gender: row['"Gender"'])
             address = Address.create(
+                profile: profile,
                 street: row['"Electorate Office Postal Address"'],
                 state: row['"Electorate Office Postal State"'],
                 postcode: row['"Electorate Office Postal PostCode"'],
