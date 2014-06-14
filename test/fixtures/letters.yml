@@ -5,19 +5,23 @@ one:
   category_id: 
   sender_id: 
   receiver_id: 
+  subject: MyString
   content: MyText
   response_id: 
   satisfaction: 1
-  reminder_sent_at: 2014-06-14 13:57:41
-  sent_at: 2014-06-14 13:57:41
+  tone: 1
+  reminder_sent_at: 2014-06-14 17:21:17
+  sent_at: 2014-06-14 17:21:17
 
 two:
   letter_thread_id: 
   category_id: 
   sender_id: 
   receiver_id: 
+  subject: MyString
   content: MyText
   response_id: 
   satisfaction: 1
-  reminder_sent_at: 2014-06-14 13:57:41
-  sent_at: 2014-06-14 13:57:41
+  tone: 1
+  reminder_sent_at: 2014-06-14 17:21:17
+  sent_at: 2014-06-14 17:21:17

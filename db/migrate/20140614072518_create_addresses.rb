@@ -4,10 +4,9 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :state, limit: 3
       t.string :street
       t.integer :postcode
-      t.string :city
+      t.string :suburb
       t.string :country
       t.string :phone
-      t.string :mobile
       t.references :profile, index: true
 
       t.timestamps

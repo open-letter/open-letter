@@ -4,18 +4,16 @@ one:
   state: MyString
   street: MyString
   postcode: 1
-  city: MyString
+  suburb: MyString
   country: MyString
   phone: MyString
-  mobile: MyString
   profile_id: 
 
 two:
   state: MyString
   street: MyString
   postcode: 1
-  city: MyString
+  suburb: MyString
   country: MyString
   phone: MyString
-  mobile: MyString
   profile_id: 

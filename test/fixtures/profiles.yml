@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  preferred_name: MyString
   first_name: MyString
   last_name: MyString
   screen_name: MyString
@@ -10,6 +11,7 @@ one:
   profile_img: MyString
 
 two:
+  preferred_name: MyString
   first_name: MyString
   last_name: MyString
   screen_name: MyString

@@ -11,16 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614044722) do
+ActiveRecord::Schema.define(version: 20140614072518) do
 
   create_table "addresses", force: true do |t|
     t.string   "state",      limit: 3
     t.string   "street"
     t.integer  "postcode"
-    t.string   "city"
+    t.string   "suburb"
     t.string   "country"
     t.string   "phone"
-    t.string   "mobile"
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -66,9 +65,11 @@ ActiveRecord::Schema.define(version: 20140614044722) do
     t.integer  "category_id"
     t.integer  "sender_id"
     t.integer  "receiver_id"
+    t.string   "subject"
     t.text     "content"
     t.integer  "response_id"
     t.integer  "satisfaction"
+    t.integer  "tone"
     t.datetime "reminder_sent_at"
     t.datetime "sent_at"
     t.datetime "created_at"
@@ -82,11 +83,12 @@ ActiveRecord::Schema.define(version: 20140614044722) do
   add_index "letters", ["sender_id"], name: "index_letters_on_sender_id"
 
   create_table "profiles", force: true do |t|
+    t.string   "preferred_name"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "screen_name"
-    t.string   "title",       limit: 10
-    t.string   "gender",      limit: 2
+    t.string   "title"
+    t.string   "gender",         limit: 2
     t.string   "dob"
     t.string   "profile_img"
     t.datetime "created_at"
@@ -96,6 +98,10 @@ ActiveRecord::Schema.define(version: 20140614044722) do
   create_table "representatives", force: true do |t|
     t.integer  "profile_id"
     t.integer  "address_id"
+    t.string   "honorific"
+    t.string   "parlamentary_title"
+    t.string   "parlamentary_title_short"
+    t.string   "party"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
