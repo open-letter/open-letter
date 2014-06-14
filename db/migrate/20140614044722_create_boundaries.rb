@@ -5,5 +5,6 @@ class CreateBoundaries < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :boundaries, :name, unique: true
   end
 end
