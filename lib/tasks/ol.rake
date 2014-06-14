@@ -49,7 +49,9 @@ namespace :ol do
             if !boundary
                 raise "Boundary #{boundary.naem} not found"
             end
-            postcode = BoundaryPostcode.find_by(boundary: boundary)
+            postcode = BoundaryPostcode.find_by(
+                boundary: boundary,
+                postcode: row['"Electorate Office Postal PostCode"'])
             gender = 'NA'
             if row['"Gender"'] == 'FEMALE'
                 gender = 'f'
