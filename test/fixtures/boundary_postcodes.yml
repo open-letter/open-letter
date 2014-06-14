@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  postcode: 1
+  suburb: MyString
+  state: MyString
+  percentage: 1.5
+  boundary_id: 
+
+two:
+  postcode: 1
+  suburb: MyString
+  state: MyString
+  percentage: 1.5
+  boundary_id: 
