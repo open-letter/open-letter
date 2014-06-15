@@ -4,7 +4,7 @@ class LetterController < ApplicationController
     def create
         puts params
         repr = Representative.find_by(id: params['representative-id'])
-        email_to = "anton.beloglazov@gmail.com"
+        email_to = 'kent.steer@gmail.com'
         to = "#{repr.profile.title}. #{repr.profile.first_name} #{repr.profile.last_name}, #{repr.honorific}\n#{repr.address.street}\n#{repr.address.suburb}, #{repr.address.state.upcase} #{repr.address.postcode}\n#{repr.address.phone}"
         from = "Mr. #{params['user-name']}\n11/30 Oliver Ln\nMelbourne, VIC 3000\nkentsteer@gmail.com\nPhone: 0413627643"
         content = "Dear Sir,\n\n#{params['letter-intro']}\n\n#{params['letter-action']}"
