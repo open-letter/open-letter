@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>OpenLetter</title>
+    <title>OpenLetter: Write to your MP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -65,7 +65,7 @@
           </div>
         </div>
       </div>
-      
+
     </div><!-- /.banner -->
     <div id="rep">
       <div class="container" id="mp">
@@ -76,7 +76,7 @@
         <div class="col-md-9">
                 <h4><span id="mp-name">Mr Adam Bandt MP</span><span class="subtle" id="mp-party"> &mdash; Australian Greens</span></h4>
                 <span class="seat">Federal Member for <span id="mp-electorate">Melbourne</span></span>
-                
+
                 <h6><span id="stat-response">65%</span> response rate <span class="subtle">(of <span id="stat-letters">85</span> letters in the last 28 days)</span></h6>
                 <div class="progress">
                   <div id="satisfied" data-toggle="tooltip" class="progress-bar" style="width: 41%;" title="41% Satisfied"></div>
@@ -84,8 +84,8 @@
                   <div id="unsatisfied" data-toggle="tooltip" class="progress-bar progress-bar-danger" style="width: 10%;" title="10% Unsatisfied"></div>
                   <div id="unanswered" data-toggle="tooltip" class="progress-bar progress-bar-inverse" style="width: 35%;" title="35% Unanswered"></div>
                 </div>
-                
-                
+
+
                 <h6>Popular topics</h6>
                 <span><button data-toggle="tooltip" title="81% Satisfied" class="btn topic btn-primary">Environment</button></span>
                 <span><button data-toggle="tooltip" title="52% Satisfied" class="btn topic btn-primary">Business</button></span>
@@ -94,7 +94,7 @@
                 <span><button data-toggle="tooltip" title="52% Unsatisfied" class="btn topic btn-danger">Transport</button></span>
                 <span><button data-toggle="tooltip" title="32% Unanswered" class="btn topic btn-inverse">Education</button></span>
                 <span><button data-toggle="tooltip" title="32% Unanswered" class="btn topic btn-inverse">Other</button></span>
-                
+
                 <p class="note">Note: This data is currently mocked for the purpose of demonstration</p>
         </div>
       </div>
@@ -104,6 +104,11 @@
 
 
     <div class="container thoughts" id="thoughts">
+
+      <form id="letter-form">
+        <input type="hidden" name="representative-id" id="representative-id" value=""/>
+        <input type="hidden" name="user-name" id="user-name" value="Kent Steer"/>
+
       <div class="row letter-section">
         <div class="col-md-9 col-md-offset-3">
           <h3>What do you want say<span class="rep-name"></span>?</h3>
@@ -115,32 +120,32 @@
           <h5>Subject</h5>
         </div>
         <div class="col-md-9">
-          <input id="subject" type="text" class="form-control input-lg" placeholder="Federal budget 2014" />
+          <input name="subject" id="subject" type="text" class="form-control input-lg" placeholder="Federal budget 2014" />
         </div>
       </div>
-      
+
       <div class="row letter-section">
         <div class="col-md-3">
           <h5>Introduction</h5>
           <p>What's up?</p>
         </div>
         <div class="col-md-9">
-          <textarea id="letter-intro" class="form-control input-lg" rows="5" placeholder="I'm a young professional living in the CBD and I'm writing to voice my concerns about ..."></textarea>
+          <textarea name="letter-intro" id="letter-intro" class="form-control input-lg" rows="5" placeholder="I'm a young professional living in the CBD and I'm writing to voice my concerns about ..."></textarea>
         </div>
       </div>
-      
+
       <div class="row letter-section">
         <div class="col-md-3">
           <h5>Expected outcome</h5>
           <p>What would you like <span class="mp-preferred-name">Adam</span> to do?</p>
         </div>
         <div class="col-md-9">
-          <textarea id="letter-action" class="form-control input-lg" rows="5" placeholder="I want you ..."></textarea>
+          <textarea name="letter-action" id="letter-action" class="form-control input-lg" rows="5" placeholder="I want you ..."></textarea>
         </div>
       </div>
 
-    
-    
+
+
       <div class="row letter-section">
         <div class="col-md-9 col-md-offset-3">
           <label class="checkbox" for="checkbox1">
@@ -150,10 +155,12 @@
 
           <button class="btn btn-hg btn-primary" id='sendnow'>Send now</button>
         </div>
-        
+
       </div>
+
+      </form>
     </div>
-  
+
       </div>
 
 

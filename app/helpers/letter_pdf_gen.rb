@@ -19,7 +19,7 @@ def generate_pdf(from, to, content, footer, regarding, output_file)
       generate_bb(pdf, -5, to, 30, 170, 70, 0,:left, :normal)
   end
   def reg(pdf, regarding)
-      generate_bb(pdf, -30, regarding, 30, 170, 50, 0, :left, :bold )
+      generate_bb(pdf, -30, regarding, 30, 300, 50, 0, :left, :bold )
   end
 
   def body(pdf, content)

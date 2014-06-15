@@ -15,6 +15,7 @@ class LetterMailer < ActionMailer::Base
         generate_pdf(from, to, content, footer, regarding, path)
         @greeting = "Hi"
         attachments['letter.pdf'] = File.read(path)
-        mail to: "anton.beloglazov@gmail.com"
+        mail(to: 'anton.beloglazov@gmail.com',
+             subject: 'OpenLetter: your letter is ready to be dispatched!')
     end
 end

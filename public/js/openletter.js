@@ -4,7 +4,7 @@ $( "#postcode" ).keyup(function(e) {
   console.log( "Handler for .keypress() called." );
 
   var pc = $( "#postcode" ).val();
-  
+
   if(e.which == 13 && $( "#postcode" ).val().length == 4) {
     console.log("Request MP details from backend");
     updateMP(pc);
@@ -16,14 +16,19 @@ $( "#postcode" ).keyup(function(e) {
     $('#rep').toggle(false);
     $('#thoughts').toggle(false);
   };
-  
+
 });
 
 // TODO modal for address details
 
 $("#sendnow").click(function(){
-  // TODO post form to endpoint
-   window.location.href='thanks.html';
+    $.ajax({
+        type: 'POST',
+        url: '/letter',
+        data: $('#letter-form').serialize()
+    });
+    event.preventDefault();
+    window.location.href='thanks.html';
 })
 
 
@@ -50,7 +55,7 @@ var stats = {
 };
 
 function updateMP(pc) {
-  
+
   $.ajax({
   type: 'GET',
   url: 'data/' + pc + '.json',
@@ -65,13 +70,15 @@ function updateMP(pc) {
     var ministerPreferred = data.profile.preferred_name;
     var ministerParty = party[data.party];
     if(ministerPreferred == '') ministerPreferred = data.profile.first_name;
-    
+
     console.log(electorate, ministerPreferred, ministerName, ministerParty);
-    
+
     $("#mp-name").text(ministerName);
     $("#mp-party").text(" \u2014 " + ministerParty);
     $("#mp-electorate").text(electorate);
     $(".mp-preferred-name").text(ministerPreferred);
+
+    $("#representative-id").val(data.id);
 
     if(electorate in stats)
     {
@@ -87,7 +94,7 @@ function updateMP(pc) {
       $("#indifferent").width(s.indifferent);
       $("#unsatisfied").width(s.unsatisfied);
       $("#unanswered").width(s.unanswered);
-    
+
       $("#satisfied").attr('data-original-title', s.satisfied + " Satisfied").tooltip('fixTitle');
       $("#indifferent").attr('data-original-title', s.indifferent + " Indifferent").tooltip('fixTitle');
       $("#unsatisfied").attr('data-original-title', s.unsatisfied + " Unsatisfied").tooltip('fixTitle');
