@@ -22,6 +22,7 @@ $( "#postcode" ).keyup(function(e) {
 // TODO modal for address details
 
 $("#sendnow").click(function(){
+  // TODO post form to endpoint
    window.location.href='thanks.html';
 })
 
@@ -66,8 +67,6 @@ function updateMP(pc) {
     if(ministerPreferred == '') ministerPreferred = data.profile.first_name;
     
     console.log(electorate, ministerPreferred, ministerName, ministerParty);
-
-
     
     $("#mp-name").text(ministerName);
     $("#mp-party").text(" \u2014 " + ministerParty);
