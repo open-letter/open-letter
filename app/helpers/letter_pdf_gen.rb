@@ -1,4 +1,5 @@
 require 'prawn'
+require 'date'
 
 # Create a class which takes as argument the text, header, footer
 
@@ -11,11 +12,11 @@ def generate_pdf(from, to, content, footer, regarding, output_file)
 
   def from(pdf, from)
       generate_bb(pdf, -40, from, 350, 140, 50, 0)
-      generate_bb(pdf, -40, from, 350, 140, 50, 0)
+      generate_bb(pdf, -10, Date.today().strftime("%A %B %d %Y"), 350, 140, 50, 0)
   end
 
   def to(pdf, to)
-      generate_bb(pdf, -40, to, 30, 170, 50, 0 )
+      generate_bb(pdf, -5, to, 30, 170, 50, 0 )
 
   end
   def reg(pdf, regarding)
