@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
     get 'representative/postcode/:postcode' => 'representative#postcode'
 
-    get 'letter/compose'
+    # post 'letter/compose'
+    resources :letter
 
     # get 'welcome/index'
 

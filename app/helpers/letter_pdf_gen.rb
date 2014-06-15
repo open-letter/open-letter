@@ -11,23 +11,23 @@ def generate_pdf(from, to, content, footer, regarding, output_file)
   end
 
   def from(pdf, from)
-      generate_bb(pdf, -40, from, 350, 170, 70, 0,:left, :normal)
-      generate_bb(pdf, -10, Date.today().strftime("%A %B %d %Y"), 350, 140, 50, 0,:left, :normal)
+      generate_bb(pdf, -40, from, 330, 160, 70, 0,:right, :normal)
+      generate_bb(pdf, -10, Date.today().strftime("%d %B %Y"), 350, 140, 50, 0,:right, :normal)
   end
 
   def to(pdf, to)
       generate_bb(pdf, -5, to, 30, 170, 70, 0,:left, :normal)
   end
   def reg(pdf, regarding)
-      generate_bb(pdf, -30, regarding, 30 , 170, 50, 0, :left, :bold )
+      generate_bb(pdf, -30, regarding, 30, 170, 50, 0, :left, :bold )
   end
 
   def body(pdf, content)
-      generate_bb(pdf, 10, content, 30,470, 300, 0, :left, :normal)
+      generate_bb(pdf, 10, content, 30, 465, 300, 0, :left, :normal)
   end
 
   def footer(pdf, footer)
-      generate_bb(pdf, -20, footer , 30, 470, 50, 0, :left, :normal )
+      generate_bb(pdf, -20, footer , 30, 465, 50, 0, :left, :normal )
   end
 
   def generate_bb(pdf, cursor_offset, text, left, width, height, stroke_opacity, align, style)
