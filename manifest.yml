@@ -5,3 +5,4 @@ applications:
   command: bundle exec rake db:migrate && bundle exec rails s -p $PORT
   services:
   - openletter_pg
+  - openletter_email
