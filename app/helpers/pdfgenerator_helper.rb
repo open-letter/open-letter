@@ -1,0 +1,2 @@
+module PdfgeneratorHelper
+end
