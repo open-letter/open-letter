@@ -43,15 +43,17 @@ var stats = {
     "satisfied":"26%",
     "indifferent":"5%",
     "unsatisfied":"58%",
-    "unanswered":"11%"}
+    "unanswered":"11%",
+    "response": "89%",
+    "letters": "328"}
 };
 
 function updateMP(pc) {
   
   $.ajax({
   type: 'GET',
-  // url: 'data/' + pc + '.json',
-  url: 'http://openletter.cfapps.io/representative/postcode/' + pc,
+  url: 'data/' + pc + '.json',
+  // url: 'http://openletter.cfapps.io/representative/postcode/' + pc,
   contentType: 'text/plain',
   xhrFields: {withCredentials: false},
   headers: {},
@@ -65,24 +67,36 @@ function updateMP(pc) {
     
     console.log(electorate, ministerPreferred, ministerName, ministerParty);
 
-    var src = "images/reps/" + electorate + ".jpg";
-    $("#mp-image").attr("src", src);
+
     
     $("#mp-name").text(ministerName);
     $("#mp-party").text(" \u2014 " + ministerParty);
     $("#mp-electorate").text(electorate);
     $(".mp-preferred-name").text(ministerPreferred);
 
-    var s = stats[electorate];
-    $("#satisfied").width(s.satisfied);
-    $("#indifferent").width(s.indifferent);
-    $("#unsatisfied").width(s.unsatisfied);
-    $("#unanswered").width(s.unanswered);
+    if(electorate in stats)
+    {
+      var s = stats[electorate];
+      $("#stat-response").text(s.response);
+      $("#stat-letters").text(s.letters);
+
+      var src = "images/reps/" + electorate + ".jpg";
+      $("#mp-image").attr("src", src);
+
+
+      $("#satisfied").width(s.satisfied);
+      $("#indifferent").width(s.indifferent);
+      $("#unsatisfied").width(s.unsatisfied);
+      $("#unanswered").width(s.unanswered);
     
-    $("#satisfied").attr('data-original-title', s.satisfied + " Satisfied").tooltip('fixTitle');
-    $("#indifferent").attr('data-original-title', s.indifferent + " Indifferent").tooltip('fixTitle');
-    $("#unsatisfied").attr('data-original-title', s.unsatisfied + " Unsatisfied").tooltip('fixTitle');
-    $("#unanswered").attr('data-original-title', s.unanswered + " Unanswered").tooltip('fixTitle');
+      $("#satisfied").attr('data-original-title', s.satisfied + " Satisfied").tooltip('fixTitle');
+      $("#indifferent").attr('data-original-title', s.indifferent + " Indifferent").tooltip('fixTitle');
+      $("#unsatisfied").attr('data-original-title', s.unsatisfied + " Unsatisfied").tooltip('fixTitle');
+      $("#unanswered").attr('data-original-title', s.unanswered + " Unanswered").tooltip('fixTitle');
+    } else {
+      var src = "images/reps/" + ministerParty + ".jpg";
+      $("#mp-image").attr("src", src);
+    }
   },
 
   error: function() {
