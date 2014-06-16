@@ -2,10 +2,9 @@ Rails.application.routes.draw do
 
     # root :controller => 'static', :action => '/public/index.html'
 
-    get 'representative/postcode/:postcode' => 'representative#postcode'
+    get 'representatives/postcode/:postcode' => 'representatives#postcode'
 
-    # post 'letter/compose'
-    resources :letter
+    resources :letters
 
     # get 'welcome/index'
 
