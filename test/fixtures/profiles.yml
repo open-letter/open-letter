@@ -4,6 +4,8 @@ one:
   preferred_name: MyString
   first_name: MyString
   last_name: MyString
+  other_names: MyString
+  initials: MyString
   screen_name: MyString
   title: MyString
   gender: MyString
@@ -14,6 +16,8 @@ two:
   preferred_name: MyString
   first_name: MyString
   last_name: MyString
+  other_names: MyString
+  initials: MyString
   screen_name: MyString
   title: MyString
   gender: MyString

@@ -4,6 +4,8 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :preferred_name
       t.string :first_name
       t.string :last_name
+      t.string :other_names
+      t.string :initials
       t.string :screen_name
       t.string :title
       t.string :gender, limit: 2

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  electorate_id: 
+  postcode_id: 
+  electorate_percent: 1.5
+
+two:
+  electorate_id: 
+  postcode_id: 
+  electorate_percent: 1.5

@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  boundary_id: 
-  boundary_postcode_id: 
+  electorate_id: 
   profile_id: 
   address_id: 
+  courtesy_title: MyString
   honorific: MyString
-  parlamentary_title: MyString
-  parlamentary_title_short: MyString
+  parlamentary_titles: MyString
+  parlamentary_titles_short: MyString
   party: MyString
 
 two:
-  boundary_id: 
-  boundary_postcode_id: 
+  electorate_id: 
   profile_id: 
   address_id: 
+  courtesy_title: MyString
   honorific: MyString
-  parlamentary_title: MyString
-  parlamentary_title_short: MyString
+  parlamentary_titles: MyString
+  parlamentary_titles_short: MyString
   party: MyString

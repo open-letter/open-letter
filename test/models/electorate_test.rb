@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BoundaryPostcodeTest < ActiveSupport::TestCase
+class ElectorateTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

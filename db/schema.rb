@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614073739) do
+ActiveRecord::Schema.define(version: 20140616084128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,31 +30,30 @@ ActiveRecord::Schema.define(version: 20140614073739) do
 
   add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
 
-  create_table "boundaries", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "boundaries", ["name"], name: "index_boundaries_on_name", unique: true, using: :btree
-
-  create_table "boundary_postcodes", force: true do |t|
-    t.integer  "postcode"
-    t.string   "suburb"
-    t.string   "state",       limit: 3
-    t.float    "percentage"
-    t.integer  "boundary_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "boundary_postcodes", ["boundary_id"], name: "index_boundary_postcodes_on_boundary_id", using: :btree
-
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "electorates", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "electorates", ["name"], name: "index_electorates_on_name", unique: true, using: :btree
+
+  create_table "electorates_postcodes", force: true do |t|
+    t.integer  "electorate_id"
+    t.integer  "postcode_id"
+    t.float    "electorate_percent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "electorates_postcodes", ["electorate_id"], name: "index_electorates_postcodes_on_electorate_id", using: :btree
+  add_index "electorates_postcodes", ["postcode_id"], name: "index_electorates_postcodes_on_postcode_id", using: :btree
 
   create_table "letter_threads", force: true do |t|
     t.boolean  "closed"
@@ -85,10 +84,30 @@ ActiveRecord::Schema.define(version: 20140614073739) do
   add_index "letters", ["response_id"], name: "index_letters_on_response_id", using: :btree
   add_index "letters", ["sender_id"], name: "index_letters_on_sender_id", using: :btree
 
+  create_table "postcodes", force: true do |t|
+    t.integer  "postcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postcodes", ["postcode"], name: "index_postcodes_on_postcode", unique: true, using: :btree
+
+  create_table "postcodes_suburbs", force: true do |t|
+    t.integer  "postcode_id"
+    t.integer  "suburb_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postcodes_suburbs", ["postcode_id"], name: "index_postcodes_suburbs_on_postcode_id", using: :btree
+  add_index "postcodes_suburbs", ["suburb_id"], name: "index_postcodes_suburbs_on_suburb_id", using: :btree
+
   create_table "profiles", force: true do |t|
     t.string   "preferred_name"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "other_names"
+    t.string   "initials"
     t.string   "screen_name"
     t.string   "title"
     t.string   "gender",         limit: 2
@@ -99,22 +118,28 @@ ActiveRecord::Schema.define(version: 20140614073739) do
   end
 
   create_table "representatives", force: true do |t|
-    t.integer  "boundary_id"
-    t.integer  "boundary_postcode_id"
+    t.integer  "electorate_id"
     t.integer  "profile_id"
     t.integer  "address_id"
+    t.string   "courtesy_title"
     t.string   "honorific"
-    t.string   "parlamentary_title"
-    t.string   "parlamentary_title_short"
+    t.string   "parlamentary_titles"
+    t.string   "parlamentary_titles_short"
     t.string   "party"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "representatives", ["address_id"], name: "index_representatives_on_address_id", using: :btree
-  add_index "representatives", ["boundary_id"], name: "index_representatives_on_boundary_id", using: :btree
-  add_index "representatives", ["boundary_postcode_id"], name: "index_representatives_on_boundary_postcode_id", using: :btree
+  add_index "representatives", ["electorate_id"], name: "index_representatives_on_electorate_id", using: :btree
   add_index "representatives", ["profile_id"], name: "index_representatives_on_profile_id", using: :btree
+
+  create_table "suburbs", force: true do |t|
+    t.string   "name"
+    t.string   "state",      limit: 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.integer  "profile_id"
