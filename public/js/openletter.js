@@ -1,5 +1,4 @@
-
-$( "#postcode" ).keyup(function(e) {
+$("#postcode").keyup(function(e) {
 
   console.log( "Handler for .keypress() called." );
 
@@ -24,11 +23,16 @@ $( "#postcode" ).keyup(function(e) {
 $("#sendnow").click(function(){
     $.ajax({
         type: 'POST',
-        url: '/letter',
-        data: $('#letter-form').serialize()
+        url: '/letters',
+        data: $('#letter-form').serialize(),
+        success: function( data ) {
+            window.location.href='thanks.html';
+        },
+        error: function() {
+          // TODO: handle errors
+        }
     });
     event.preventDefault();
-    window.location.href='thanks.html';
 })
 
 
@@ -58,15 +62,18 @@ function updateMP(pc) {
 
   $.ajax({
   type: 'GET',
-  url: 'data/' + pc + '.json',
-  // url: 'http://openletter.cfapps.io/representative/postcode/' + pc,
+  // url: 'data/' + pc + '.json',
+  url: '/representatives/postcode/' + pc,
   contentType: 'text/plain',
   xhrFields: {withCredentials: false},
   headers: {},
 
   success: function( data ) {
-    var electorate = data.boundary.name;
-    var ministerName = [data.profile.title,data.profile.first_name,data.profile.last_name,data.honorific].join(" ");
+    data = data[0];
+    // TODO: add handling multiple results
+    var electorate = data.electorate.name;
+    var ministerName = [data.profile.title,data.profile.first_name,
+      data.profile.last_name,data.honorific].join(" ");
     var ministerPreferred = data.profile.preferred_name;
     var ministerParty = party[data.party];
     if(ministerPreferred == '') ministerPreferred = data.profile.first_name;
