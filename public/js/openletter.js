@@ -38,7 +38,7 @@ $("#sendnow").click(function(){
 
 $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
 
-var party = {"AG":"Australian Greens","LP":"Liberal Party of Australia","ALP":"Australian Labor Party"};
+var party = {"AG":"Australian Greens","LP":"Liberal Party of Australia","ALP":"Australian Labor Party", "Nats":"The Nationals", "PUP":"Palmer United Party", "LNP":"Liberal National Party"};
 
 var stats = {
   "Melbourne": {
