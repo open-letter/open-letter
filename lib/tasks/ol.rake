@@ -77,6 +77,24 @@ namespace :ol do
         end
     end
 
+    desc "Import profile images of representatives"
+    task import_reps_img: :environment do
+        path = 'db/data/reps_img.csv'
+        CSV.foreach(path, :headers => true) do |row|
+            row.each {|key, value| row[key] = value.strip}
+            names = row['name'].split
+            profile = Profile.find_by(
+                preferred_name: names[0],
+                last_name: names.drop(1).join(' '))
+            if profile && Representative.find_by(profile: profile)
+                profile.profile_img = row['file']
+                profile.save
+            else
+                puts "No profile, skipped: #{row}"
+            end
+        end
+    end
+
     desc "Fetch representatives pages by postcodes"
     task fetch_reps_pages: :environment do
         base_url = 'http://www.aph.gov.au/Senators_and_Members/Parliamentarian_Search_Results?ps=100&q='
