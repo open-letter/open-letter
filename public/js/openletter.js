@@ -75,6 +75,9 @@ function updateMP(pc) {
     var ministerName = [data.profile.title,data.profile.first_name,
       data.profile.last_name,data.honorific].join(" ");
     var ministerPreferred = data.profile.preferred_name;
+    
+    console.log(data.party);
+    
     var ministerParty = party[data.party];
     if(ministerPreferred == '') ministerPreferred = data.profile.first_name;
 
