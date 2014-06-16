@@ -1,4 +1,5 @@
 require 'csv'
+require 'open-uri'
 
 namespace :ol do
 
@@ -73,6 +74,24 @@ namespace :ol do
                 parlamentary_titles_short: row['""'],
                 party: row['"Political Party"'])
             puts "#{profile.first_name} #{profile.last_name}"
+        end
+    end
+
+    desc "Fetch representatives pages by postcodes"
+    task fetch_reps_pages: :environment do
+        base_url = 'http://www.aph.gov.au/Senators_and_Members/Parliamentarian_Search_Results?ps=100&q='
+        if !Dir.exists?('tmp/web')
+            Dir.mkdir 'tmp/web'
+        end
+        Postcode.order(:postcode).each do |postcode|
+            code = postcode.postcode
+            puts code
+            url = "#{base_url}#{code}"
+            open("tmp/web/#{code}.html", "wb") do |file|
+                open(url) do |remote|
+                    file.write(remote.read)
+                end
+            end
         end
     end
 
