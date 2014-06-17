@@ -75,9 +75,9 @@ function updateMP(pc) {
     var ministerName = [data.profile.title,data.profile.first_name,
       data.profile.last_name,data.honorific].join(" ");
     var ministerPreferred = data.profile.preferred_name;
-    
+
     console.log(data.party);
-    
+
     var ministerParty = party[data.party];
     if(ministerPreferred == '') ministerPreferred = data.profile.first_name;
 
@@ -96,8 +96,6 @@ function updateMP(pc) {
       $("#stat-response").text(s.response);
       $("#stat-letters").text(s.letters);
 
-      var src = "images/reps/" + electorate + ".jpg";
-      $("#mp-image").attr("src", src);
 
 
       $("#satisfied").width(s.satisfied);
@@ -109,10 +107,12 @@ function updateMP(pc) {
       $("#indifferent").attr('data-original-title', s.indifferent + " Indifferent").tooltip('fixTitle');
       $("#unsatisfied").attr('data-original-title', s.unsatisfied + " Unsatisfied").tooltip('fixTitle');
       $("#unanswered").attr('data-original-title', s.unanswered + " Unanswered").tooltip('fixTitle');
-    } else {
-      var src = "images/reps/" + ministerParty + ".jpg";
-      $("#mp-image").attr("src", src);
     }
+    // var src = "images/reps/" + ministerParty + ".jpg";
+    // $("#mp-image").attr("src", src);
+    // var src = "images/reps/" + electorate + ".jpg";
+      var src = "images/reps2/" + data.profile.profile_img;
+      $("#mp-image").attr("src", src);
   },
 
   error: function() {
