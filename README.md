@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/open-letter/open-letter.png?label=ready&title=Ready)](https://waffle.io/open-letter/open-letter)
 # OpenLetter
 
 
