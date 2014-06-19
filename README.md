@@ -5,7 +5,7 @@
 *A platform for simple and transparent dialogue between people and their
 government.*
 
-It may surprise many people to learn that the most effective way to share your
+It may surprise many people to learn that, despite the availability of electronic alternatives, the most effective way to share your
 concerns and ideas with elected representatives is to send them physical mail.
 But [it is
 true](http://www.ted.com/talks/omar_ahmad_political_change_with_pen_and_paper).
