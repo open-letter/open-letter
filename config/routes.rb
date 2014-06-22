@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+    root 'home#index'
+
     # root :controller => 'static', :action => '/public/index.html'
 
     get 'representatives/postcode/:postcode' => 'representatives#postcode'
