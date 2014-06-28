@@ -1,3 +1,4 @@
+@mvp
 Feature: Sending physical mail to MPs
   As a user
   I want to send physical mail to MPs

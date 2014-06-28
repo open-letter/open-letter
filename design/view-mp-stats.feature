@@ -1,13 +1,11 @@
-@mvp
-Feature: Sending email to MPs
+Feature: Viewing MP statistics
   As a user
-  I want to send emails to MPs
-  Because they are cheaper than real mail
-  And I want my MP to know how I feel
+  I want to be able to see statistics on MP performance
+  Because this promotes genuine representation and accountability
 
-    Scenario: Authenticated User writes to their MP
-      Given User has authenticated
-      When User enters comments into input fields
+    Scenario: User selects MP by 
+      Given User has arrived at OpenLetter.org.au
+      When User 
       And checks the send by email checkbox
       And clicks "Submit"
       Then an email body should be generated
